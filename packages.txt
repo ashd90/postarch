@@ -1,0 +1,13 @@
+docker
+ansible
+jenkins
+terraform
+bleachbit
+gnome-disk-utility
+bluez
+bluez-utils
+blueman
+qbittorrent
+aws-cli
+btop
+kubectl
