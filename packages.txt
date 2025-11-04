@@ -11,3 +11,5 @@ qbittorrent
 aws-cli
 btop
 kubectl
+mpv
+libreoffice-fresh
