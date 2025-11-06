@@ -13,3 +13,4 @@ btop
 kubectl
 mpv
 libreoffice-fresh
+aether
