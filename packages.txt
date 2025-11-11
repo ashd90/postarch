@@ -3,7 +3,6 @@ ansible
 jenkins
 terraform
 bleachbit
-gnome-disk-utility
 bluez
 bluez-utils
 blueman
@@ -15,4 +14,3 @@ mpv
 libreoffice-fresh
 aether
 noto-fonts-emoji
-flatpak
