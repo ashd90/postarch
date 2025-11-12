@@ -1,7 +1,5 @@
 #!/bin/bash
 
-yay -S ttf-firacode-nerd --noconfirm
-
 # Installing Starship Prompt
 #
 curl -sS https://starship.rs/install.sh | sh
