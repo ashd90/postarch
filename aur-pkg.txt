@@ -1,3 +1,4 @@
 visual-studio-code-bin
 brave-bin
 auto-cpufreq-git
+ttf-firacode-nerd
