@@ -33,13 +33,13 @@ Ensure you have `bash` or your preferred shell installed.
 
 Below are some of the scripts included:
 
-| 🗒️ Script Name         | 📝 Description                                                          |
+| 🗒️ Script Name         | 📝 Description                                                         |
 |------------------------|------------------------------------------------------------------------|
 | `backup.sh`            | Backs up a specified directory to a destination folder.                |
 | `cleanup.sh`           | Cleans up temporary files and caches to free up disk space.            |
 | `sysinfo.sh`           | Displays detailed system information and resource usage.               |
 | `netmonitor.sh`        | Monitors network activity and logs bandwidth usage.                    |
-| `deploy.sh`            | Automates deployment of web applications with customizable options.    |
+| `web-app.sh`           | Creates web applications.                                              |
 | `update.sh`            | Updates system packages and notifies about available upgrades.         |
 
 > *Feel free to explore each script for usage instructions and customization options!*
