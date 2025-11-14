@@ -1,53 +1,57 @@
 #!/bin/bash
 
-echo "=== Web App Creator ==="
+# Ask user for inputs
+read -p "Enter the Web App Name: " APP_NAME
+read -p "Enter the Web App URL: " APP_URL
+read -p "Enter the Icon URL: " ICON_URL
 
-# Ask for details
-read -p "Enter the name of the web app: " APP_NAME
-read -p "Enter the URL of the web app: " APP_URL
-read -p "Enter the icon path (PNG/SVG): " ICON_PATH
+# Paths
+APP_DIR="$HOME/.local/share/applications"
+ICON_DIR="$HOME/.local/share/icons"
+DESKTOP_FILE="$APP_DIR/${APP_NAME,,}.desktop"
+ICON_FILE="$ICON_DIR/${APP_NAME,,}.png"
 
-# Choose Browser (Chrome by default)
-BROWSER="chromium"
+# Create directories
+mkdir -p "$APP_DIR"
+mkdir -p "$ICON_DIR"
 
-if ! command -v $BROWSER &> /dev/null
-then
-    echo "Chrome not found! Trying chromium..."
-    BROWSER="chromium"
-fi
+# Download icon
+echo "Downloading icon..."
+wget -q "$ICON_URL" -O "$ICON_FILE"
 
-if ! command -v $BROWSER &> /dev/null
-then
-    echo "Chromium not found! Trying brave..."
-    BROWSER="brave"
-fi
-if ! command -v $BROWSER &> /dev/null
-then
-    echo "Brave not found! Trying firefox..."
-    BROWSER="firefox"
-fi
-if ! command -v $BROWSER &> /dev/null
-then
-    echo "No supported browser found! Install firefox/Chromium/Brave."
+if [ $? -ne 0 ]; then
+    echo "Failed to download icon. Exiting."
     exit 1
 fi
 
-# Desktop file location
-DESKTOP_FILE="$HOME/.local/share/applications/${APP_NAME// /_}.desktop"
+# Detect browser
+if command -v firefox >/dev/null 2>&1; then
+    BROWSER="firefox"
+elif command -v chromium >/dev/null 2>&1; then
+    BROWSER="chromium"
+elif command -v brave >/dev/null 2>&1; then
+    BROWSER="brave-browser"
+else
+    echo "No supported browser found (firefox/Chromium/Brave). Exiting."
+    exit 1
+fi
 
-# Create launcher
+# Create desktop entry
+echo "Creating desktop launcher..."
+
 cat <<EOF > "$DESKTOP_FILE"
 [Desktop Entry]
+Version=1.0
+Type=Application
 Name=$APP_NAME
 Exec=$BROWSER --app="$APP_URL"
-Icon=$ICON_PATH
-Type=Application
-Categories=WebApp;
+Icon=$ICON_FILE
+Terminal=false
+Categories=Network;WebBrowser;
 EOF
 
-# Fix permissions
 chmod +x "$DESKTOP_FILE"
 
-echo "Web App '$APP_NAME' created successfully!"
-echo "Launcher saved at: $DESKTOP_FILE"
+echo "Web app created successfully!"
+echo "Launcher added to your applications menu."
 
