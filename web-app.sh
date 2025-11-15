@@ -1,9 +1,51 @@
 #!/bin/bash
 
+# Colors
+GREEN="\e[32m"
+YELLOW="\e[33m"
+RED="\e[31m"
+RESET="\e[0m"
+
+clear
+echo -e "${GREEN}========================================${RESET}"
+echo -e "${GREEN}      Web App Launcher Generator        ${RESET}"
+echo -e "${GREEN}========================================${RESET}"
+echo ""
+
 # Ask user for inputs
 read -p "Enter the Web App Name: " APP_NAME
 read -p "Enter the Web App URL: " APP_URL
 read -p "Enter the Icon URL: " ICON_URL
+echo ""
+
+# Browser selection menu
+while true; do
+    echo -e "${YELLOW}Choose the browser to use:${RESET}"
+    echo "  1) Chromium"
+    echo "  2) Brave"
+    echo "  3) Cancel"
+    echo ""
+    read -p "Enter your choice (1-3): " BROWSER_CHOICE
+
+    case $BROWSER_CHOICE in
+        1)
+            BROWSER="chromium"
+            break
+            ;;
+        2)
+            BROWSER="brave-browser"
+            break
+            ;;
+        3)
+            echo -e "${RED}Operation cancelled.${RESET}"
+            exit 0
+            ;;
+        *)
+            echo -e "${RED}Invalid choice. Please try again.${RESET}"
+            echo ""
+            ;;
+    esac
+done
 
 # Paths
 APP_DIR="$HOME/.local/share/applications"
@@ -11,34 +53,17 @@ ICON_DIR="$HOME/.local/share/icons"
 DESKTOP_FILE="$APP_DIR/${APP_NAME,,}.desktop"
 ICON_FILE="$ICON_DIR/${APP_NAME,,}.png"
 
+echo ""
+echo -e "${GREEN}Creating Web App Launcher...${RESET}"
+echo ""
+
 # Create directories
-mkdir -p "$APP_DIR"
-mkdir -p "$ICON_DIR"
+mkdir -p "$APP_DIR" "$ICON_DIR"
 
 # Download icon
-echo "Downloading icon..."
-wget -q "$ICON_URL" -O "$ICON_FILE"
-
-if [ $? -ne 0 ]; then
-    echo "Failed to download icon. Exiting."
-    exit 1
-fi
-
-# Detect browser
-if command -v firefox >/dev/null 2>&1; then
-    BROWSER="firefox"
-elif command -v chromium >/dev/null 2>&1; then
-    BROWSER="chromium"
-elif command -v brave >/dev/null 2>&1; then
-    BROWSER="brave-browser"
-else
-    echo "No supported browser found (firefox/Chromium/Brave). Exiting."
-    exit 1
-fi
+wget -q -O "$ICON_FILE" "$ICON_URL"
 
 # Create desktop entry
-echo "Creating desktop launcher..."
-
 cat <<EOF > "$DESKTOP_FILE"
 [Desktop Entry]
 Version=1.0
@@ -52,6 +77,7 @@ EOF
 
 chmod +x "$DESKTOP_FILE"
 
-echo "Web app created successfully!"
-echo "Launcher added to your applications menu."
+echo -e "${GREEN}✔ Web app created successfully!${RESET}"
+echo -e "${GREEN}✔ Launcher added to your applications menu.${RESET}"
+echo -e "${GREEN}✔ Browser used: $BROWSER${RESET}"
 
