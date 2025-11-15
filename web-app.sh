@@ -33,7 +33,7 @@ while true; do
             break
             ;;
         2)
-            BROWSER="brave-browser"
+            BROWSER="brave"
             break
             ;;
         3)
