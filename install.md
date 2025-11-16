@@ -27,13 +27,13 @@ windowrulev2 = opacity 0.9, class:^(rofi)$
 
 
 
-✅ 1. Desktop Entry — Install Web App
+# ✅ 1. Desktop Entry — Install Web App
 
-Create this file:
+# Create this file:
 
 touch ~/.local/share/applications/webapp-install.desktop
 
-Content:
+# Content:
 
 [Desktop Entry]
 [Desktop Entry]
@@ -49,13 +49,13 @@ Make it executable:
 
 chmod +x ~/.local/share/applications/webapp-install.desktop
 
-✅ 2. Desktop Entry — Remove Web App
+# ✅ 2. Desktop Entry — Remove Web App
 
-Create this file:
+# Create this file:
 
 touch ~/.local/share/applications/web-app-remove.desktop
 
-Content:
+# Content:
 
 [Desktop Entry]
 [Desktop Entry]
@@ -71,7 +71,7 @@ Make it executable:
 
 chmod +x ~/.local/share/applications/web-app-remove.desktop
 
-Option 1 — Use Your Own Icon Files
+# Option 1 — Use Your Own Icon Files
 
 ~/.local/share/icons/webapp-install.png
 ~/.local/share/icons/webapp-remove.png
