@@ -12,5 +12,4 @@ btop
 kubectl
 mpv
 libreoffice-fresh
-aether
 noto-fonts-emoji
