@@ -12,3 +12,5 @@ cp alaritty.toml ~/.config/alacritty/
 sudo pacman -S --needed - < packages.txt
 
 yay -S --noconfirm - < aur-pkg.txt
+
+cp .fonts/NotoColorEmoji-Regular.ttf ~/.local/share/fonts/
