@@ -1,0 +1,20 @@
+Setting up Virtual Machines in QEMU on Arch Linux
+
+# QEMU/KVM Dependancies to install:
+
+sudo pacman -S virt-manager
+sudo pacman -S --asdeps qemu-desktop dnsmasq
+
+# Make Libvirt Group for your user
+
+# Edit /etc/libvirt/libvirtd.conf (Change the following Lines)
+
+unix_sock_group = "libvirt"
+unix_sock_rw_perms = "0770"
+
+# Then add your user and create group:
+
+sudo usermod -a -G libvirt $(whoami)
+newgrp libvirt
+
+# Reboot and launch virt-manager!
