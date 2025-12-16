@@ -1,0 +1,695 @@
+/* ================= GLOBAL ================= */
+
+* {
+  border: none;
+  border-radius: 10px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 10px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: linear-gradient(90deg, #020617, #0f172a);
+  padding: 1px 6px;
+  border-radius: 16px;
+ /* box-shadow: 0 0 16px rgba(0,0,0,0.7);*/
+}
+
+/* ================= WORKSPACES (NUMBERS ONLY + ANIMATED GLOW) ================= */
+
+#workspaces {
+  padding: 1px;
+}
+
+/* ================= WORKSPACES — PRO ANIMATION PACK (GTK SAFE) ================= */
+
+/* ================= WORKSPACES — ULTRA PRO GTK SAFE PACK ================= */
+
+#workspaces button {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e5e7eb;
+  background: rgba(255,255,255,0.10);
+  border-radius: 8px;
+  padding: 2px 6px;
+  margin: 1px;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ===== EMPTY — SOFT FADE + THIN UNDERLINE ===== */
+#workspaces button.empty {
+  background: rgba(255,255,255,0.05);
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  animation: wsEmptyFade 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes wsEmptyFade {
+  from { background: rgba(255,255,255,0.04); }
+  to   { background: rgba(255,255,255,0.10); }
+}
+
+/* ===== ACTIVE — GRADIENT SHIFT + BOLD POP ===== */
+#workspaces button.active {
+  background-size: 200% 200%;
+  background-image: linear-gradient(135deg, #22d3ee, #38bdf8, #0ea5e9);
+  color: #020617;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  border-bottom: 3px solid #38bdf8;
+  animation: wsGradientShift 2s ease infinite, wsWave 0.35s ease-out;
+}
+
+@keyframes wsGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Wave glow */
+@keyframes wsWave {
+  0% {
+    box-shadow:
+      -8px 0 0 rgba(56,189,248,0.0),
+       0 0 0 rgba(56,189,248,0.0),
+       8px 0 0 rgba(56,189,248,0.0);
+  }
+  60% {
+    box-shadow:
+      -8px 0 10px rgba(56,189,248,0.6),
+       0 0 14px rgba(56,189,248,1),
+       8px 0 10px rgba(56,189,248,0.6);
+  }
+  100% {
+    box-shadow:
+      -8px 0 0 rgba(56,189,248,0.0),
+       0 0 0 rgba(56,189,248,0.0),
+       8px 0 0 rgba(56,189,248,0.0);
+  }
+}
+
+/* ===== OCCUPIED BUT INACTIVE — THICK UNDERLINE ===== */
+#workspaces button:not(.empty):not(.active) {
+  background: linear-gradient(135deg, #facc15, #fb923c);
+  color: #020617;
+  border-bottom: 3px solid #fb923c;
+}
+
+/* ===== FULLSCREEN ===== */
+#workspaces button.fullscreen {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  color: #020617;
+  font-weight: bold;
+}
+
+/* ===== URGENT — GTK SAFE SHAKE ===== */
+#workspaces button.urgent {
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+  color: #020617;
+  font-weight: bold;
+  animation: wsUrgentShake 0.35s ease infinite;
+}
+
+/* GTK-safe shake using margin */
+@keyframes wsUrgentShake {
+  0%   { margin-left: 1px; }
+  25%  { margin-left: -1px; }
+  50%  { margin-left: 1px; }
+  75%  { margin-left: -1px; }
+  100% { margin-left: 1px; }
+}
+
+/* ================= DIFFERENT PULSE DURATION PER WORKSPACE ================= */
+
+#workspaces button:nth-child(1):not(.active):not(.empty) { animation: wsPulse1 0.6s ease-out; }
+#workspaces button:nth-child(2):not(.active):not(.empty) { animation: wsPulse2 0.8s ease-out; }
+#workspaces button:nth-child(3):not(.active):not(.empty) { animation: wsPulse3 1.0s ease-out; }
+#workspaces button:nth-child(4):not(.active):not(.empty) { animation: wsPulse4 0.6s ease-out; }
+#workspaces button:nth-child(5):not(.active):not(.empty) { animation: wsPulse5 0.8s ease-out; }
+#workspaces button:nth-child(6):not(.active):not(.empty) { animation: wsPulse6 1.0s ease-out; }
+#workspaces button:nth-child(7):not(.active):not(.empty) { animation: wsPulse7 0.6s ease-out; }
+#workspaces button:nth-child(8):not(.active):not(.empty) { animation: wsPulse8 0.8s ease-out; }
+#workspaces button:nth-child(9):not(.active):not(.empty) { animation: wsPulse9 1.0s ease-out; }
+
+@keyframes wsPulse1 { 50% { box-shadow: 0 0 10px #38bdf8; } }
+@keyframes wsPulse2 { 50% { box-shadow: 0 0 10px #34d399; } }
+@keyframes wsPulse3 { 50% { box-shadow: 0 0 10px #fbbf24; } }
+@keyframes wsPulse4 { 50% { box-shadow: 0 0 10px #fb7185; } }
+@keyframes wsPulse5 { 50% { box-shadow: 0 0 10px #a78bfa; } }
+@keyframes wsPulse6 { 50% { box-shadow: 0 0 10px #38bdf8; } }
+@keyframes wsPulse7 { 50% { box-shadow: 0 0 10px #34d399; } }
+@keyframes wsPulse8 { 50% { box-shadow: 0 0 10px #fbbf24; } }
+@keyframes wsPulse9 { 50% { box-shadow: 0 0 10px #fb7185; } }
+
+/* ================= PER-WORKSPACE COLOR IDENTITY ================= */
+
+#workspaces button:nth-child(1) { border-color: #38bdf8; }
+#workspaces button:nth-child(2) { border-color: #34d399; }
+#workspaces button:nth-child(3) { border-color: #fbbf24; }
+#workspaces button:nth-child(4) { border-color: #fb7185; }
+#workspaces button:nth-child(5) { border-color: #a78bfa; }
+#workspaces button:nth-child(6) { border-color: #38bdf8; }
+#workspaces button:nth-child(7) { border-color: #34d399; }
+#workspaces button:nth-child(8) { border-color: #fbbf24; }
+#workspaces button:nth-child(9) { border-color: #fb7185; }
+
+
+/* ================= WINDOW ================= */
+
+#window {
+  padding: 0 8px;
+  background: linear-gradient(135deg, #c084fc, #e879f9);
+  color: #020617;
+  font-weight: bold;
+  margin: 1px 2px;
+  font-size: 11px;
+}
+
+/* ================= CLOCK ================= */
+
+#clock {
+  background: linear-gradient(135deg, #fb7185, #f472b6, #c084fc);
+  color: #020617;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: bold;
+ /* box-shadow: 0 0 14px #c084fc;*/
+  margin: 1px 2px;
+}
+
+/* ================= CPU ================= */
+
+
+/* ================= MEMORY ================= */
+
+#memory {
+  background: linear-gradient(135deg, #facc15, #fde047);
+  color: #020617;
+  padding: 3px 6px;
+  margin: 1px 2px;
+  font-weight: bold;
+
+}
+
+/* ================= STORAGE ================= */
+
+#disk {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #020617;
+  font-size: 11px;     /* Slightly bigger than global */
+  padding: 2px 7px;  /* Wider for long text */
+  letter-spacing: 0.3px;
+  font-weight: bold;
+
+}
+
+/* Disk warning animation */
+#disk.warning {
+  background: linear-gradient(135deg, #facc15, #fde047);
+  box-shadow: 0 0 10px #fde047;
+  animation: diskPulse 1.6s infinite alternate;
+}
+
+#disk.critical {
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+  box-shadow:
+    0 0 12px #ef4444,
+    0 0 22px rgba(239,68,68,0.9);
+  animation: diskPulseCritical 1s infinite alternate;
+}
+
+/* ================= NETWORK ================= */
+/* ================= NETWORK (HIGH-CONTRAST AMBER → COPPER → RED) ================= */
+
+/* Normal connected */
+#network {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f59e0b, #92400e); /* Brighter Amber → Deep Copper */
+  color: #f8fafc;   /* ✅ Near-white for maximum readability */
+  font-weight: 900;
+}
+
+/* Heavy activity */
+#network.warning {
+  background: linear-gradient(135deg, #fb923c, #ea580c); /* Bright Orange */
+  color: #f8fafc;
+}
+
+/* Disconnected */
+#network.disconnected {
+  background: linear-gradient(135deg, #7f1d1d, #450a0a); /* Dark red */
+  color: #fecaca;
+}
+
+
+/* ================= AUDIO ================= */
+
+#pulseaudio {
+  background: linear-gradient(135deg, #c084fc, #e879f9);
+  color: #020617;
+  padding: 3px 6px;
+  margin: 1px 2px;
+  font-weight: bold;
+}
+
+#pulseaudio.muted {
+  background: linear-gradient(135deg, #64748b, #475569);
+  color: #e5e7eb;
+}
+
+/* ================= TRAY ================= */
+
+#tray {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+  padding: 3px 6px;
+  margin: 1px 2px;
+}
+
+/* ================= DISK ANIMATIONS ================= */
+
+@keyframes diskPulse {
+  from { box-shadow: 0 0 8px #fde047; }
+  to   { box-shadow: 0 0 16px #fde047; }
+}
+
+@keyframes diskPulseCritical {
+  from { box-shadow: 0 0 10px #ef4444; }
+  to   { box-shadow: 0 0 24px #ef4444; }
+}
+
+window#waybar {
+  background: rgba(2,6,23,0.65);
+  padding: 1px 6px;
+  border-radius: 16px;
+  box-shadow: 0 0 16px rgba(0,0,0,0.7);
+}
+/* ===== TEMPERATURE WIDGET CLEAN (NO SHADOW) ===== */
+
+#temperature {
+  background: linear-gradient(135deg, #fb7185, #f43f5e);
+  color: #020617;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 9px;
+  margin: 1px 2px;
+  border-radius: 10px;
+}
+
+/* Optional subtle hover (still no shadow) */
+#temperature:hover {
+  background: linear-gradient(135deg, #f43f5e, #fb7185);
+}
+/* ================= WORKSPACE INTERACTION ENHANCEMENTS (GTK SAFE) ================= */
+
+/* ===== HOVER GLOW ===== */
+#workspaces button:hover {
+  box-shadow: 0 0 10px rgba(56,189,248,0.8);
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+}
+
+/* ===== SCROLL SWITCH FEEDBACK (ACTIVE FLASH) ===== */
+/* Waybar toggles .active on scroll — this reinforces visual feedback */
+#workspaces button.active {
+  animation: wsScrollFlash 0.2s ease-out;
+}
+
+@keyframes wsScrollFlash {
+  0%   { box-shadow: 0 0 0px rgba(56,189,248,0.0); }
+  50%  { box-shadow: 0 0 14px rgba(56,189,248,1); }
+  100% { box-shadow: 0 0 0px rgba(56,189,248,0.0); }
+}
+
+/* ===== NOTIFICATION / ACTIVITY BADGE STYLE (URGENT COUNTER LOOK) ===== */
+/* This applies when Waybar marks a workspace as urgent */
+#workspaces button.urgent {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,1),
+    0 0 12px rgba(239,68,68,1);
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+  color: #020617;
+  font-weight: 900;
+}
+
+/* Optional: subtle pulse for urgent to simulate badge alert */
+#workspaces button.urgent {
+  animation: wsUrgentPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes wsUrgentPulse {
+  0%   { box-shadow: 0 0 6px rgba(239,68,68,0.6); }
+  50%  { box-shadow: 0 0 14px rgba(239,68,68,1); }
+  100% { box-shadow: 0 0 6px rgba(239,68,68,0.6); }
+}
+/* ================= CPU HEAT GLOW (GTK SAFE) ================= */
+/* ================= COLORFUL CPU GRADIENT ================= */
+
+/* ================= COLORFUL CPU (NON-SKY-BLUE THEME) ================= */
+
+/* Normal CPU — Teal → Green */
+/* ================= CPU BREATHING EFFECT ================= */
+
+#cpu {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #14b8a6, #22c55e);
+  color: #022c22;
+  font-weight: 700;
+  animation: cpuBreathe 3s ease-in-out infinite;
+}
+
+/* Medium load */
+#cpu.warning {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  color: #2a0e00;
+  animation: cpuBreatheFast 1.8s ease-in-out infinite;
+}
+
+/* Heavy load */
+#cpu.critical {
+  background: linear-gradient(135deg, #ef4444, #db2777);
+  color: #ffffff;
+  animation: cpuBreatheFast 1s ease-in-out infinite;
+}
+
+@keyframes cpuBreathe {
+  0%   { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+  50%  { box-shadow: 0 0 12px rgba(34,197,94,0.7); }
+  100% { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+}
+
+@keyframes cpuBreatheFast {
+  0%   { box-shadow: 0 0 4px rgba(239,68,68,0.4); }
+  50%  { box-shadow: 0 0 14px rgba(239,68,68,0.9); }
+  100% { box-shadow: 0 0 4px rgba(239,68,68,0.4); }
+}
+
+/* ================= TEMPERATURE COLOR RAMP (GTK SAFE) ================= */
+
+#temperature {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9); /* ❄️ Cool */
+  color: #020617;
+}
+
+/* Warm */
+#temperature.warning {
+  background: linear-gradient(135deg, #fde68a, #facc15); /* 🌤 Warm */
+  color: #020617;
+}
+
+/* Hot */
+#temperature.critical {
+  background: linear-gradient(135deg, #ef4444, #fb7185); /* 🔥 Hot */
+  color: #020617;
+  animation: tempHeatPulse 0.9s ease-in-out infinite;
+}
+
+@keyframes tempHeatPulse {
+  0%   { box-shadow: 0 0 6px rgba(239,68,68,0.6); }
+  50%  { box-shadow: 0 0 16px rgba(239,68,68,1); }
+  100% { box-shadow: 0 0 6px rgba(239,68,68,0.6); }
+}
+/* ================= STORAGE LIVE GRADIENT ================= */
+
+/* ================= STORAGE (LIME → TEAL) ================= */
+
+#disk {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #a3e635, #14b8a6); /* Lime → Teal */
+  color: #022c22;
+  font-weight: 800;
+  animation: diskShimmer 4s ease-in-out infinite;
+
+}
+
+/* High usage */
+#disk.warning {
+  background: linear-gradient(135deg, #fbbf24, #f97316); /* Amber → Orange */
+  color: #2a0e00;
+}
+
+/* Critical usage */
+#disk.critical {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  animation: diskPulse 1s ease-in-out infinite;
+}
+
+@keyframes diskPulse {
+  0%   { box-shadow: 0 0 4px rgba(239,68,68,0.5); }
+  50%  { box-shadow: 0 0 14px rgba(239,68,68,1); }
+  100% { box-shadow: 0 0 4px rgba(239,68,68,0.5); }
+}
+@keyframes diskShimmer {
+  0%   { box-shadow: 0 0 0px rgba(20,184,166,0.0); }
+  50%  { box-shadow: 0 0 12px rgba(20,184,166,0.6); }
+  100% { box-shadow: 0 0 0px rgba(20,184,166,0.0); }
+}
+/* ================= CLOCK GLOW ON NOTIFICATION ================= */
+
+/* ================= CLOCK (COLORFUL, NON-GREY) ================= */
+/* ================= CLOCK PER-MINUTE COLOR SHIFT ================= */
+
+#clock {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #f8fafc;
+  font-weight: 800;
+  animation: clockDrift 60s linear infinite;
+}
+
+/* Notification glow still works */
+#clock.urgent {
+  background: linear-gradient(135deg, #c084fc, #8b5cf6);
+  color: #020617;
+  animation: clockGlow 1s ease-in-out infinite;
+}
+
+@keyframes clockDrift {
+  0%   { box-shadow: 0 0 4px rgba(124,58,237,0.3); }
+  50%  { box-shadow: 0 0 10px rgba(79,70,229,0.7); }
+  100% { box-shadow: 0 0 4px rgba(124,58,237,0.3); }
+}
+
+/* ================= RAM PRESSURE COLOR RAMP ================= */
+/* ================= RAM PRESSURE (PURPLE → PINK → RED) ================= */
+
+#memory {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #a855f7, #ec4899); /* Purple → Pink */
+  color: #020617;
+  font-weight: 700;
+}
+
+/* High RAM usage */
+#memory.warning {
+  background: linear-gradient(135deg, #fbbf24, #f97316); /* Yellow → Orange */
+  color: #2a0e00;
+}
+
+/* Critical RAM usage */
+#memory.critical {
+  background: linear-gradient(135deg, #ef4444, #b91c1c); /* Red */
+  color: #ffffff;
+  animation: ramPulse 1s ease-in-out infinite;
+}
+
+@keyframes ramPulse {
+  0%   { box-shadow: 0 0 4px rgba(239,68,68,0.6); }
+  50%  { box-shadow: 0 0 14px rgba(239,68,68,1); }
+  100% { box-shadow: 0 0 4px rgba(239,68,68,0.6); }
+}
+/* ================= PREMIUM MULTI-COLOR TOOLTIPS (GTK SAFE) ================= */
+
+/* ---------- Base Tooltip (Fallback) ---------- */
+tooltip {
+  background: linear-gradient(135deg, #1e293b, #312e81);
+  color: #f8fafc;
+
+  border-radius: 14px;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  border: 1px solid rgba(248, 250, 252, 0.12);
+}
+
+tooltip label {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* ---------- CPU Tooltip (Green Theme) ---------- */
+#cpu tooltip {
+  background: linear-gradient(135deg, #052e16, #14532d);
+  color: #dcfce7;
+}
+
+/* ---------- RAM Tooltip (Purple → Pink) ---------- */
+#memory tooltip {
+  background: linear-gradient(135deg, #3b0764, #831843);
+  color: #fdf4ff;
+}
+
+/* ---------- DISK Tooltip (Gold → Teal) ---------- */
+#disk tooltip {
+  background: linear-gradient(135deg, #78350f, #134e4a);
+  color: #fefce8;
+}
+
+/* ---------- NETWORK Tooltip (Amber → Red) ---------- */
+#network tooltip {
+  background: linear-gradient(135deg, #78350f, #7f1d1d);
+  color: #fff7ed;
+}
+
+/* ---------- CLOCK Tooltip (Purple → Indigo) ---------- */
+#clock tooltip {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: #eef2ff;
+}
+
+/* ---------- ICON vs NUMBER COLOR SEPARATION ---------- */
+/* Applies where icons and numbers share the same label */
+#cpu tooltip label,
+#memory tooltip label,
+#disk tooltip label,
+#network tooltip label {
+  color: #e5e7eb;
+}
+
+/* ---------- CRITICAL TOOLTIP FLASHING ---------- */
+
+#cpu.critical tooltip,
+#memory.critical tooltip,
+#disk.critical tooltip {
+  background: linear-gradient(135deg, #7f1d1d, #450a0a);
+  color: #fecaca;
+
+  border: 1px solid rgba(254, 202, 202, 0.35);
+
+  animation: tooltipCriticalPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes tooltipCriticalPulse {
+  0%   { border-radius: 14px; }
+  50%  { border-radius: 20px; }
+  100% { border-radius: 14px; }
+}
+/* ========================= */
+/* NVMe Disk Widget Styling */
+/* ========================= */
+/* ========================= */
+/* NVMe Disk Widget (YELLOW) */
+/* ========================= */
+
+#disk.nvme,
+#disk#nvme {
+  background: linear-gradient(135deg, #ca8a04, #facc15);
+  color: #1c1917;
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  margin-left: 3px;
+  margin-right: 3px;
+
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+
+/* ======================== */
+/* SSD Disk Widget (GREEN)  */
+/* ======================== */
+
+#disk.ssd,
+#disk#ssd {
+  background: linear-gradient(135deg, #065f46, #10b981);
+  color: #ecfdf5;
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  margin-left: 3px;
+  margin-right: 3px;
+
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* ============================================ */
+/* GLOBAL WHITE TEXT + UNIFIED FONT WEIGHT 700  */
+/* ============================================ */
+
+/* NVMe Disk */
+#disk#nvme {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* SSD Disk */
+#disk#ssd {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* CPU */
+#cpu {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* RAM / Memory */
+#memory {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Temperature */
+#temperature {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Audio / Volume */
+#pulseaudio,
+#wireplumber {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Active Window Title */
+#window {
+  color: #ffffff;
+  font-weight: 700;
+}
+/* Network Font Weight Match (SSD / NVMe) */
+#network {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+
