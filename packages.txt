@@ -16,3 +16,4 @@ noto-fonts-emoji
 minikube
 go
 rust
+flatpak
