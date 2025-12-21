@@ -17,3 +17,4 @@ minikube
 go
 rust
 flatpak
+gnome-disk-utility
