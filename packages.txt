@@ -20,4 +20,6 @@ flatpak
 gnome-disk-utility
 mpd
 mpc
-
+intel-media-driver
+libva-intel-driver
+libva-utils
