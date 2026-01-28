@@ -21,36 +21,36 @@ echo ""
 
 # Browser selection menu
 while true; do
-    echo -e "${YELLOW}Choose the browser to use:${RESET}"
-    echo "  1) Thorium (Recommended for E1-1500)"
-    echo "  2) Brave"
-    echo "  3) Chromium"
-    echo "  4) Cancel"
-    echo ""
-    read -p "Enter your choice (1-4): " BROWSER_CHOICE
+  echo -e "${YELLOW}Choose the browser to use:${RESET}"
+  echo "  1) Thorium (Recommended for old computers)"
+  echo "  2) Brave"
+  echo "  3) Chromium"
+  echo "  4) Cancel"
+  echo ""
+  read -p "Enter your choice (1-4): " BROWSER_CHOICE
 
-    case $BROWSER_CHOICE in
-        1)
-            BROWSER="thorium-browser"
-            break
-            ;;
-        2)
-            BROWSER="brave"
-            break
-            ;;
-        3)
-            BROWSER="chromium"
-            break
-            ;;
-        4)
-            echo -e "${RED}Operation cancelled.${RESET}"
-            exit 0
-            ;;
-        *)
-            echo -e "${RED}Invalid choice. Please try again.${RESET}"
-            echo ""
-            ;;
-    esac
+  case $BROWSER_CHOICE in
+  1)
+    BROWSER="thorium-browser"
+    break
+    ;;
+  2)
+    BROWSER="brave"
+    break
+    ;;
+  3)
+    BROWSER="chromium"
+    break
+    ;;
+  4)
+    echo -e "${RED}Operation cancelled.${RESET}"
+    exit 0
+    ;;
+  *)
+    echo -e "${RED}Invalid choice. Please try again.${RESET}"
+    echo ""
+    ;;
+  esac
 done
 
 # Standard Linux paths for launchers and icons
@@ -69,7 +69,7 @@ mkdir -p "$APP_DIR" "$ICON_DIR"
 wget -q -O "$ICON_FILE" "$ICON_URL"
 
 # Create the .desktop entry
-cat <<EOF > "$DESKTOP_FILE"
+cat <<EOF >"$DESKTOP_FILE"
 [Desktop Entry]
 Version=1.0
 Type=Application
