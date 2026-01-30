@@ -1,0 +1,9 @@
+git clone --depth 1 https://github.com/VandalByte/dedsec-grub2-theme.git && cd dedsec-grub2-theme
+
+# Install theme
+
+sudo python3 dedsec-theme.py --install
+
+#Uninstall theme
+
+sudo python3 dedsec-theme.py --uninstall
