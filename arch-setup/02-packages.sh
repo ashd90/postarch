@@ -22,7 +22,7 @@ sudo usermod -aG docker $USER
 
 # 4. AUR Apps & GRUB Theme
 yay -S --noconfirm \
-  brave-bin thorium-browser-bin visual-studio-code-bin obsidian-bin
+  brave-bin visual-studio-code-bin
 
 # 6. MPV GPU Acceleration Config
 # Optimized for Intel UHD 630
