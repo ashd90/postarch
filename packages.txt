@@ -11,7 +11,6 @@ aws-cli
 btop
 kubectl
 mpv
-libreoffice-fresh
 noto-fonts-emoji
 minikube
 go
