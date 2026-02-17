@@ -16,6 +16,7 @@ minikube
 go
 rust
 flatpak
+starship
 gnome-disk-utility
 mpd
 mpc
