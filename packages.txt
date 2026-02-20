@@ -7,7 +7,6 @@ bluez
 bluez-utils
 blueman
 qbittorrent
-aws-cli
 btop
 kubectl
 mpv
