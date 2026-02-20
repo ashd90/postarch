@@ -19,6 +19,7 @@ starship
 gnome-disk-utility
 mpd
 mpc
+yt-dlp
 intel-media-driver
 libva-intel-driver
 libva-utils
