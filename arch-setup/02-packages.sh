@@ -8,7 +8,7 @@ sudo pacman -S --needed --noconfirm \
   base-devel git go rust nodejs npm python-pip python-setuptools \
   docker docker-compose kubectl minikube terraform ansible \
   aws-cli github-cli lazydocker lazygit btop eza fzf jq ripgrep starship zoxide \
-  alacritty mpv
+  alacritty mpv uv
 
 # 2. LazyVim Dependencies
 # Includes Neovim, Nerd Fonts, and clipboard tools
