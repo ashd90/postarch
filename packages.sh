@@ -7,8 +7,6 @@ else
     # Fallback for older systems or if /etc/os-release is not present
     if command -v apt-get &> /dev/null; then
         DISTRO_ID="debian"
-    elif command -v yum &> /dev/null; then
-        DISTRO_ID="rhel" # Or fedora, centos, etc.
     elif command -v dnf &> /dev/null; then
         DISTRO_ID="fedora"
     elif command -v pacman &> /dev/null; then
