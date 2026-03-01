@@ -3,3 +3,4 @@ brave-bin
 auto-cpufreq-git
 onlyoffice-bin
 ttf-firacode-nerd
+smile
