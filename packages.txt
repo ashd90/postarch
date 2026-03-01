@@ -25,3 +25,4 @@ libva-intel-driver
 libva-utils
 lm_sensors
 uv
+podman
