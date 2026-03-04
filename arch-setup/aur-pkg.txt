@@ -4,3 +4,4 @@ auto-cpufreq-git
 onlyoffice-bin
 ttf-firacode-nerd
 smile
+localsend-bin
