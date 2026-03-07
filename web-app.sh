@@ -9,15 +9,19 @@ RESET="\e[0m"
 clear
 echo -e "${GREEN}========================================${RESET}"
 echo -e "${GREEN}      Web App Launcher Generator        ${RESET}"
-echo -e "${GREEN}      (Optimized for Archcraft)         ${RESET}"
+echo -e "${GREEN}      (Optimized for Archcraft/KDE)     ${RESET}"
 echo -e "${GREEN}========================================${RESET}"
 echo ""
 
 # Ask user for inputs
-read -p "Enter the Web App Name (e.g., Gemini): " APP_NAME
+read -p "Enter the Web App Name (e.g., YouTube): " APP_NAME
 read -p "Enter the Web App URL: " APP_URL
 read -p "Enter the Icon URL (or local path): " ICON_URL
 echo ""
+
+# Extract the domain to use as the dynamic WMClass (e.g., youtube.com)
+# This fixes the "generic icon" issue in KDE Task Manager
+DOMAIN=$(echo "$APP_URL" | awk -F[/:] '{print $4}')
 
 # Browser selection menu
 while true; do
@@ -32,13 +36,13 @@ while true; do
   case $BROWSER_CHOICE in
   1)
     BROWSER="thorium-browser"
-    WM_CLASS="thorium-browser"
+    WM_CLASS="thorium-browser" # Thorium standard
     break
     ;;
   2)
     BROWSER="brave"
-    # Brave uses Brave-browser for its WMClass in app mode
-    WM_CLASS="Brave-browser"
+    # For Brave Web-Apps, the window class usually matches the domain
+    WM_CLASS="$DOMAIN"
     break
     ;;
   3)
@@ -47,7 +51,12 @@ while true; do
     break
     ;;
   4)
+    echo -e "${RED}Operation cancelled.${RESET}"
     exit 0
+    ;;
+  *)
+    echo -e "${RED}Invalid choice. Please try again.${RESET}"
+    echo ""
     ;;
   esac
 done
@@ -59,15 +68,15 @@ DESKTOP_FILE="$APP_DIR/${APP_NAME,,}.desktop"
 ICON_FILE="$ICON_DIR/${APP_NAME,,}.png"
 
 echo ""
-echo -e "${GREEN}Creating Web App Launcher...${RESET}"
+echo -e "${GREEN}Creating Web App Launcher for $APP_NAME...${RESET}"
 
 # Create directories if they don't exist
 mkdir -p "$APP_DIR" "$ICON_DIR"
 
-# Download icon (works for both URLs and local files via wget)
+# Download icon
 wget -q -O "$ICON_FILE" "$ICON_URL"
 
-# Create the .desktop entry with dynamic StartupWMClass
+# Create the .desktop entry with the DYNAMIC WM_CLASS
 cat <<EOF >"$DESKTOP_FILE"
 [Desktop Entry]
 Version=1.0
@@ -83,9 +92,9 @@ EOF
 # Make the file executable
 chmod +x "$DESKTOP_FILE"
 
-# Refresh the application database so it shows in the menu
+# Refresh the application database
 update-desktop-database "$APP_DIR" >/dev/null 2>&1
 
 echo -e "${GREEN}SUCCESS: '$APP_NAME' has been created!${RESET}"
-echo -e "You can now find it in your ${YELLOW}Applications Menu${RESET}."
+echo -e "StartupWMClass set to: ${YELLOW}$WM_CLASS${RESET}"
 echo ""
