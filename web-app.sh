@@ -9,7 +9,7 @@ RESET="\e[0m"
 clear
 echo -e "${GREEN}========================================${RESET}"
 echo -e "${GREEN}      Web App Launcher Generator        ${RESET}"
-echo -e "${GREEN}      (Optimized for Archcraft/KDE)     ${RESET}"
+echo -e "${GREEN}      (Optimized for Arch/KDE)          ${RESET}"
 echo -e "${GREEN}========================================${RESET}"
 echo ""
 
