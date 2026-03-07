@@ -22,7 +22,7 @@ echo ""
 # Browser selection menu
 while true; do
   echo -e "${YELLOW}Choose the browser to use:${RESET}"
-  echo "  1) Thorium (Recommended for old computers)"
+  echo "  1) Thorium"
   echo "  2) Brave"
   echo "  3) Chromium"
   echo "  4) Cancel"
@@ -32,23 +32,22 @@ while true; do
   case $BROWSER_CHOICE in
   1)
     BROWSER="thorium-browser"
+    WM_CLASS="thorium-browser"
     break
     ;;
   2)
     BROWSER="brave"
+    # Brave uses Brave-browser for its WMClass in app mode
+    WM_CLASS="Brave-browser"
     break
     ;;
   3)
     BROWSER="chromium"
+    WM_CLASS="chromium-browser"
     break
     ;;
   4)
-    echo -e "${RED}Operation cancelled.${RESET}"
     exit 0
-    ;;
-  *)
-    echo -e "${RED}Invalid choice. Please try again.${RESET}"
-    echo ""
     ;;
   esac
 done
@@ -68,7 +67,7 @@ mkdir -p "$APP_DIR" "$ICON_DIR"
 # Download icon (works for both URLs and local files via wget)
 wget -q -O "$ICON_FILE" "$ICON_URL"
 
-# Create the .desktop entry
+# Create the .desktop entry with dynamic StartupWMClass
 cat <<EOF >"$DESKTOP_FILE"
 [Desktop Entry]
 Version=1.0
@@ -78,7 +77,7 @@ Exec=$BROWSER --app="$APP_URL"
 Icon=$ICON_FILE
 Terminal=false
 Categories=Network;WebBrowser;
-StartupWMClass=Thorium-browser
+StartupWMClass=$WM_CLASS
 EOF
 
 # Make the file executable
