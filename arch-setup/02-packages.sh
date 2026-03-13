@@ -8,7 +8,7 @@ sudo pacman -S --needed --noconfirm \
   base-devel git go rust nodejs npm python-pip python-setuptools \
   docker docker-compose kubectl minikube terraform ansible \
   aws-cli github-cli lazydocker lazygit btop eza fzf jq ripgrep starship zoxide \
-  alacritty mpv uv qbittorrent yt-dlp noto-fonts-emoji jenkins
+  alacritty mpv uv qbittorrent yt-dlp noto-fonts-emoji jenkins smplayer smplayer-skins
 
 # 2. LazyVim Dependencies
 # Includes Neovim, Nerd Fonts, and clipboard tools
@@ -22,7 +22,7 @@ sudo usermod -aG docker $USER
 
 # 4. AUR Apps & GRUB Theme
 yay -S --noconfirm \
-  brave-bin visual-studio-code-bin
+  brave-bin visual-studio-code-bin localsend-bin onlyoffice-bin smile
 
 # 6. MPV GPU Acceleration Config
 # Optimized for Intel UHD 630
