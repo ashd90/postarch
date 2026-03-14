@@ -5,3 +5,5 @@ onlyoffice-bin
 ttf-firacode-nerd
 smile
 localsend-bin
+librewolf-bin
+pomotroid-bin
