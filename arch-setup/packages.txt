@@ -13,8 +13,6 @@ mpv
 noto-fonts-emoji
 minikube
 go
-rust
-flatpak
 starship
 gnome-disk-utility
 mpd
