@@ -1,7 +1,6 @@
 docker
 ansible
 jenkins
-terraform
 bleachbit
 bluez
 bluez-utils
