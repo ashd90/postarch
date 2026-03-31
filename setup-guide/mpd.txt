@@ -1,0 +1,119 @@
+1. Installation
+Install the daemon and the CLI controller.
+
+Bash
+
+sudo pacman -S mpd mpc
+
+2. MPD Configuration (~/.config/mpd/mpd.conf)
+Create the directory and the config file:
+
+Bash
+
+mkdir -p ~/.config/mpd/playlists
+touch ~/.config/mpd/mpd.conf
+Paste this inside:
+
+Code snippet
+
+music_directory    "~/Music"
+playlist_directory "~/.config/mpd/playlists"
+db_file            "~/.config/mpd/database"
+log_file           "syslog"
+pid_file           "~/.config/mpd/pid"
+state_file         "~/.config/mpd/state"
+
+audio_output {
+    type            "pipewire"
+    name            "PipeWire Sound Server"
+}
+Start the service:
+
+Bash
+
+systemctl --user enable --now mpd
+mpc update
+3. Waybar Config (~/.config/waybar/config.jsonc)
+Add mpd to your modules list at the top, then add the module definition below:
+
+Code snippet
+
+{
+    "modules-right": ["mpd", "pulseaudio", "clock"], // Add it here
+
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title} ",
+        "format-disconnected": "󰝛 Disconnected",
+        "format-stopped": "󰓛 Stopped",
+        "interval": 2,
+        "max-length": 40,
+        "state-icons": {
+            "paused": "󰐊",
+            "playing": "󰏤"
+        },
+        // Mouse Controls
+        "on-click": "mpc toggle",
+        "on-click-right": "mpc next",
+        "on-click-middle": "mpc random",
+        "on-scroll-up": "mpc next",
+        "on-scroll-down": "mpc prev"
+    }
+}
+4. Waybar Styling (~/.config/waybar/style.css)
+This applies the Reyes Gradient (Golden Yellow to Tropical Teal) to the native module.
+
+CSS
+
+#mpd {
+    /* Reyes Gradient */
+    background: linear-gradient(45deg, #FFD700, #FF8C00, #00CED1);
+    background-size: 200% 200%;
+    animation: gradient-animation 5s ease infinite;
+    
+    color: #1a1a1a;
+    border-radius: 12px;
+    padding: 0 15px;
+    margin: 4px 8px;
+    font-weight: 900;
+}
+
+/* Moving gradient effect */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Styling for different states */
+#mpd.paused {
+    background: linear-gradient(45deg, #FF8C00, #928374);
+    color: #ffffff;
+}
+
+#mpd.disconnected {
+    background: #bf616a;
+    color: #ffffff;
+}
+5. Hyprland Auto-start (~/.config/hypr/hyprland.conf)
+Ensure MPD and Waybar start when you log in:
+
+Bash
+
+exec-once = mpd
+exec-once = waybar
+Summary of Controls:
+Left Click: Play/Pause
+
+Right Click: Next Song
+
+Middle Click: Toggle Shuffle (Random)
+
+Scroll Up/Down: Next/Previous Track
+
+Final Step:
+Restart everything to apply:
+
+Bash
+
+killall waybar && waybar &
+mpc update && mpc add / && mpc play
