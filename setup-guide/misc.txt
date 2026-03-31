@@ -1,0 +1,8 @@
+# Post Installation steps after IntelliJ IDEA community & Pycharm community edition on Arch Linux
+
+sudo chown -R $USER:$USER /usr/share/idea
+sudo chmod -R 755 /usr/share/idea
+
+
+sudo chown -R $USER:$USER /usr/share/pycharm
+sudo chmod -R 755 /usr/share/pycharm
