@@ -2,6 +2,8 @@ yay
 docker
 ansible
 jenkins
+terraform
+vlc
 bleachbit
 bluez
 bluez-utils
