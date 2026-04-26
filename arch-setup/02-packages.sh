@@ -7,7 +7,7 @@ echo "Step 2: Installing DevOps, LazyVim..."
 sudo pacman -S --needed --noconfirm \
   base-devel git go rust nodejs npm python-pip python-setuptools \
   docker docker-compose kubectl minikube terraform ansible \
-  aws-cli github-cli lazydocker lazygit btop eza fzf jq ripgrep starship zoxide \
+  github-cli lazydocker lazygit btop eza fzf jq ripgrep starship zoxide \
   alacritty mpv uv qbittorrent yt-dlp noto-fonts-emoji jenkins cpu-x smplayer smplayer-skins
 
 # 2. LazyVim Dependencies
