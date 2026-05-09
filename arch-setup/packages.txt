@@ -32,3 +32,4 @@ rust
 nodejs
 kitty
 ghostty
+plasma-browser-integration
