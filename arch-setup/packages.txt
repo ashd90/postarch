@@ -15,6 +15,7 @@ mpv
 noto-fonts-emoji
 minikube
 go
+gopls
 starship
 gnome-disk-utility
 mpd
