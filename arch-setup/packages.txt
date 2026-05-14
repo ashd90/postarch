@@ -34,3 +34,4 @@ nodejs
 kitty
 ghostty
 plasma-browser-integration
+bat
