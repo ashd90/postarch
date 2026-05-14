@@ -6,3 +6,18 @@ sudo chmod -R 755 /usr/share/idea
 
 sudo chown -R $USER:$USER /usr/share/pycharm
 sudo chmod -R 755 /usr/share/pycharm
+
+#create mysql container 
+
+docker run --name mysql-container \
+  -v mysql_data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=your_secure_password \
+  -e MYSQL_DATABASE=app_db \
+  -e MYSQL_USER=app_user \
+  -e MYSQL_PASSWORD=app_secure_password \
+  -p 3306:3306 -d mysql:latest
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'app_user'@'%';
+FLUSH PRIVILEGES;
+EXIT;
