@@ -7,3 +7,4 @@ smile
 localsend-bin
 librewolf-bin
 paru-bin
+beekeeper-studio-bin
