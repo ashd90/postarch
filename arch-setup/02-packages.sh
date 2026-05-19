@@ -6,7 +6,7 @@ echo "Step 2: Installing DevOps, LazyVim..."
 # 1. DevOps & Core Tools
 sudo pacman -S --needed --noconfirm \
   base-devel git go gopls rust nodejs npm python-pip python-setuptools \
-  docker docker-compose kubectl minikube terraform ansible \
+  docker docker-compose podman kubectl minikube terraform ansible \
   github-cli lazydocker lazygit btop bat haruna eza fzf jq ripgrep starship zoxide \
   alacritty mpv uv qbittorrent yt-dlp noto-fonts-emoji jenkins cpu-x smplayer smplayer-skins
 
