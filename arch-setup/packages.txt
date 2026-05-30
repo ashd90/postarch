@@ -35,3 +35,4 @@ kitty
 ghostty
 plasma-browser-integration
 bat
+showtime
