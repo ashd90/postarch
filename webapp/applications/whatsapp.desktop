@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WhatsApp
+Exec=brave --app="https://web.whatsapp.com"
+Icon=/home/ashish/.local/share/icons/whatsapp.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-web.whatsapp.com__-Default

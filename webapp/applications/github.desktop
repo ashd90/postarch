@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Github
+Exec=brave --app="https://github.com/ashd90"
+Icon=/home/ashish/.local/share/icons/github.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-github.com__ashd90-Default

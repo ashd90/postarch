@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google-Sheets
+Exec=brave --app="https://docs.google.com/spreadsheets/u/0/"
+Icon=/home/ashish/.local/share/icons/google-sheets.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-docs.google.com__spreadsheets_u_0_-Default

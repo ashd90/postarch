@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Claude-AI
+Exec=brave --app="https://claude.ai/new"
+Icon=/home/ashish/.local/share/icons/claude-ai.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-claude.ai__new-Default

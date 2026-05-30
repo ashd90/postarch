@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gemini
+Exec=brave --app="https://gemini.google.com"
+Icon=/home/ashish/.local/share/icons/gemini.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-gemini.google.com__-Default

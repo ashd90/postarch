@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google-Drive
+Exec=brave --app="https://drive.google.com/"
+Icon=/home/ashish/.local/share/icons/google-drive.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-drive.google.com__-Default

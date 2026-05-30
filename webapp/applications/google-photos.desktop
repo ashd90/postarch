@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google-Photos
+Exec=brave --app="https://photos.google.com/"
+Icon=/home/ashish/.local/share/icons/google-photos.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-photos.google.com__-Default

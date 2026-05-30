@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ZohoMail
+Exec=brave --app="https://mail.zoho.in"
+Icon=/home/ashish/.local/share/icons/zohomail.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-mail.zoho.in__-Default

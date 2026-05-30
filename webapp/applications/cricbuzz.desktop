@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cricbuzz
+Exec=brave --app="https://cricbuzz.com"
+Icon=/home/ashish/.local/share/icons/cricbuzz.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-cricbuzz.com__-Default

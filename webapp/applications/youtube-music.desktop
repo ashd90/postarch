@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Youtube-Music
+Exec=brave --app="https://music.youtube.com"
+Icon=/home/ashish/.local/share/icons/youtube-music.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-music.youtube.com__-Default

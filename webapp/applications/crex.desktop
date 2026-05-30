@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Crex
+Exec=brave --app="https://crex.com"
+Icon=/home/ashish/.local/share/icons/crex.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-crex.com__-Default

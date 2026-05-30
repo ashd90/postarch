@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google-Maps
+Exec=brave --app="https://www.google.com/maps"
+Icon=/home/ashish/.local/share/icons/google-maps.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-www.google.com__maps-Default

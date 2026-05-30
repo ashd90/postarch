@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Youtube
+Exec=brave --app="https://youtube.com"
+Icon=/home/ashish/.local/share/icons/youtube.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-youtube.com__-Default

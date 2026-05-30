@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Udemy
+Exec=brave --app="https://udemy.com"
+Icon=/home/ashish/.local/share/icons/udemy.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-udemy.com__-Default

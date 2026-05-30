@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=X
+Exec=brave --app="https://x.com"
+Icon=/home/ashish/.local/share/icons/x.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-x.com__-Default

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google-Docs
+Exec=brave --app="https://docs.google.com/document/u/0/"
+Icon=/home/ashish/.local/share/icons/google-docs.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-docs.google.com__document_u_0_-Default

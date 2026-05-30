@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JioHotstar
+Exec=brave --app="https://hotstar.com/in"
+Icon=/home/ashish/.local/share/icons/jiohotstar.png
+Terminal=false
+Categories=Network;WebBrowser;
+StartupWMClass=brave-hotstar.com__in-Default
