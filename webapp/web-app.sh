@@ -26,31 +26,25 @@ DOMAIN=$(echo "$APP_URL" | awk -F[/:] '{print $4}')
 # Browser selection menu
 while true; do
   echo -e "${YELLOW}Choose the browser to use:${RESET}"
-  echo "  1) Thorium"
-  echo "  2) Brave"
-  echo "  3) Chromium"
-  echo "  4) Cancel"
+  echo "  1) Brave"
+  echo "  2) Chromium"
+  echo "  3) Cancel"
   echo ""
-  read -p "Enter your choice (1-4): " BROWSER_CHOICE
+  read -p "Enter your choice (1-3): " BROWSER_CHOICE
 
   case $BROWSER_CHOICE in
   1)
-    BROWSER="thorium-browser"
-    WM_CLASS="thorium-browser" # Thorium standard
-    break
-    ;;
-  2)
     BROWSER="brave"
     # For Brave Web-Apps, the window class usually matches the domain
     WM_CLASS="$DOMAIN"
     break
     ;;
-  3)
+  2)
     BROWSER="chromium"
     WM_CLASS="chromium-browser"
     break
     ;;
-  4)
+  3)
     echo -e "${RED}Operation cancelled.${RESET}"
     exit 0
     ;;
